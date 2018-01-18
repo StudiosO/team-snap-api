@@ -6,35 +6,41 @@
  */
 
 module.exports = {
-
+  connection: 'mongoServer',
   attributes: {
-    roleID : {
-      type : 'String',
-      required : true
+    firstName: {
+      type: 'string',
+      required: true   
     },
-    username : {
-      type : 'String',
-      required : true
+    lastName: {
+      type: 'string',
+      required: true
     },
-    firstName : {
-      type : 'String',
-      required : true
-    },
-    lastName : {
-      type : 'String',
-      required : true
-    },
-    email : {
-      type : 'String',
+    username: {
+      type: 'string',
       unique: true,
-      required: true,
-      contains: '@'
+      required: true
     },
-    password : {
-      type : 'String',
-      required : true
+    email: {
+      type: 'email',
+      required: true
     },
-    role : { model : 'Roles' }
+    password: {
+      type: 'string',      
+      required: true
+    },
+    role: {
+      model: 'roles'
+    },
+    devices: {
+      collection: 'devices',
+      via: 'user'
+    },
+    ux_event: {
+      collection: 'uxevent',
+      via: 'user'
+    } 
+
   }
 };
 
