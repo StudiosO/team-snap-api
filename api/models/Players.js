@@ -26,8 +26,8 @@ module.exports = {
       type : 'String',
       required : true
     },
-    yerseyNumerb : {
-      type : 'Number',
+    yerseyNumber : {
+      type : 'String',
       required : true
     },
     gender : {
