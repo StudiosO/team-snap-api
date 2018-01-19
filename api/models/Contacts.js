@@ -1,5 +1,5 @@
 /**
- * Players.js
+ * Contacts.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -11,32 +11,17 @@ module.exports = {
     user : {
       model : 'User'
     },
-    team : {
-      model : 'Teams'
-    },
-    managerAccess : {
-      type : 'Boolean',
-      required : true
-    },
-    nonPlayer : {
-      type : 'Boolean',
-      required : true
-    },
-    birthDay : {
+    name : {
       type : 'String',
       required : true
     },
-    yerseyNumber : {
+    _type : {
       type : 'String',
       required : true
     },
-    gender : {
+    _value : {
       type : 'String',
       required : true
-    },
-    image : {
-      type : 'binData',
-      required : false
     }
   }
 };
