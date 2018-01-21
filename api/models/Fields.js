@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-connection : 'mongoServer',
+  connection : 'mongoServer',
   attributes: {
   	label: {
       type: 'string',
@@ -18,7 +18,11 @@ connection : 'mongoServer',
     },
     fieldType: {
       model: 'fieldtype'
-    }
+    },
+    registrationField: {
+      collection: 'registrationFields',
+      via: 'fields'
+    } 
   }
 };
 
