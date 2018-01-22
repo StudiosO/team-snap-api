@@ -33,7 +33,10 @@ module.exports = {
     gender : {
       type : 'String',
       required : true
-    }
+    },
+    playerRegistration: {
+      model: 'PlayerRegistration'
+    },
   }
 };
 
