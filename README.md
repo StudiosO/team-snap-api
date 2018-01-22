@@ -10,14 +10,14 @@ API development with sails
 
 All the models in the api have the following endpoints for create, destroy, update, find all, find one, search, populate
 
-
+```
 GET ALL => GET				http://server_address/api/:model_name
 CREATE  => POST 			http://server_address/api/:model_name
 
 GET ONE => GET				http://server_address/api/:model_name/:id
 UPDATE  => PUT				http://server_address/api/:model_name/:id
 DELETE  => DELETE 		http://server_address/api/:model_name/:id
-
+```
 ####Search
 SEARCH 	=> GET				http://server_address/api/:model_name?where={"name":{"contains":"theodore"}}
 
