@@ -42,7 +42,10 @@ module.exports = {
     image : {
       type : 'binData',
       required : false
-    }
+    },
+    playerRegistration: {
+      model: 'PlayerRegistration'
+    },
   }
 };
 
