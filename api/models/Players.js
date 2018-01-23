@@ -9,10 +9,15 @@ module.exports = {
   connection : 'mongoServer',
   attributes: {
     user : {
-      model : 'User'
+      model : 'User',
+      unique : true
     },
     team : {
       model : 'Teams'
+    },
+    positions :{
+      collection : "positions",
+      via : "player"
     },
     managerAccess : {
       type : 'Boolean',

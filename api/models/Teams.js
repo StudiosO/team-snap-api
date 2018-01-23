@@ -14,6 +14,14 @@ module.exports = {
     },
     league : {
       model : 'Leagues'
+    },
+    managers : {
+      collection : "managers",
+      via : 'team'
+    },
+    players : {
+      collection : "players",
+      via : "team"
     }
 
   }

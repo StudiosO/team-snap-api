@@ -10,6 +10,9 @@ module.exports = {
   attributes: {
     user: {
       model : 'User'
+    },
+    team : {
+      model : "Teams"
     }
   }
 };

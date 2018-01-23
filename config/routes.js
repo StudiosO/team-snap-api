@@ -35,7 +35,7 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /team-all/:id' : 'TeamsController.getAllData'
+  'GET /team/:id' : 'TeamsController.getAllData'
 
   /***************************************************************************
   *                                                                          *

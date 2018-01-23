@@ -19,7 +19,7 @@ module.exports = {
       type : 'String',
       required : true
     },
-    _value : {
+    info : {
       type : 'String',
       required : true
     }
