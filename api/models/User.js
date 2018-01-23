@@ -32,6 +32,14 @@ module.exports = {
     role: {
       model: 'roles'
     },
+    player : {
+      collection : 'players',
+      via: 'user'
+    },
+    contacts : {
+      collection : 'contacts',
+      via : 'user'
+    },
     devices: {
       collection: 'devices',
       via: 'user'
