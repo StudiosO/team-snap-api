@@ -10,6 +10,10 @@ module.exports = {
   attributes: {
     name : {
       type : 'String'
+    },
+    teams : {
+      collection : "Teams",
+      via : 'league'
     }
   }
 };

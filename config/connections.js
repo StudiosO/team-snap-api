@@ -58,11 +58,11 @@ module.exports.connections = {
   ***************************************************************************/
    mongoServer: {
      adapter: 'sails-mongo',
-     host: 'ds253587.mlab.com',
-     port: 53587,
-     user: 'admin', //optional
-     password: 'def123deftr', //optional
-     database: 'teamsnap' //optional
+     host: '138.68.19.227',
+     port: 27017,
+     user: 'sc-team-snap', //optional
+     password: 'RT3Yx5nZ', //optional
+     database: 'team_snap' //optional
    }
 
   /***************************************************************************
