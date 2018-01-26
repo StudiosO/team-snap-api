@@ -29,7 +29,7 @@ module.exports = {
       required : false
     },
     opponent : {
-      collection : 'oppenentgame',
+      collection : 'opponentgame',
       via : 'game'
     },
     location : {
