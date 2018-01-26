@@ -72,3 +72,7 @@ setTimeout(function sunrise () {
     </div>
   </div>
 </div>
+
+<% if (sails.config.livereloadPath) { %>
+  <script src="<%= sails.config.livereloadPath %>"></script>
+<% } %>

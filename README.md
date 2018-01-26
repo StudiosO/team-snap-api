@@ -55,6 +55,9 @@ GET ALL => GET				http://server_address/api/:model_name?createdAt DESC&limit=30
 	Registration
 	RegistrationFields
 	Teams
+	Games
+	LocationGame
+	OpponentGame
 	UxEvent
 ```
 
@@ -69,6 +72,33 @@ GET ALL => GET				http://server_address/api/:model_name?createdAt DESC&limit=30
 ```
 
 ```
+
+### Games
+GET http://server_address/api/team/:id get all info player of team
+<br />
+POST http://server_address/api/game save a new game sending all params
+
+### Param for new game
+```
+-team //is id of team
+-dateTime //format MM/DD/YYYY hh:mm:ss a
+-attendenceTraking //Boolean true or false
+-notifyTeam //Boolean true or false
+-optionalInfo //json with fields and values
+
+//for location of game
+-locationName
+-address
+-link
+-detail
+
+//for data of opponent
+-opponentName
+-person
+-phone
+-email
+```
+
 ### Prerequisites
 
 ```

@@ -20,11 +20,17 @@ module.exports = function(grunt) {
     assets: {
 
       // Assets to watch:
-      files: ['assets/**/*', 'tasks/pipeline.js', '!**/node_modules/**'],
+      files: ['assets/**/*', 'tasks/pipeline.js', '!**/node_modules/**', 'controllers/*'],
+      options: {
+        livereload: {
+          host: 'localhost',
+          port: 9000
+        }
+      },
 
       // When assets are changed:
       tasks: ['syncAssets' , 'linkAssets' ]
-    }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');

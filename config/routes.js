@@ -35,7 +35,9 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /team/:id' : 'TeamsController.getAllData'
+  'GET /team/:id' : 'TeamsController.getAllData',
+  'POST /game' : 'GamesController.newGame',
+  'POST /ev' : 'EventController.newEvent'
 
   /***************************************************************************
   *                                                                          *
