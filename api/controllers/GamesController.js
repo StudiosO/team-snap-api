@@ -25,9 +25,9 @@ module.exports = {
             }, (err, location)=>{
                 if (err) { return res.serverError(err); }
 
-                OppenentGame.create({
+                OpponentGame.create({
                     game : game.id,
-                    name : req.body.oppenentName,
+                    name : req.body.opponentName,
                     person : req.body.person,
                     phone : req.body.phone,
                     email : req.body.email
