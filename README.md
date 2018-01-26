@@ -75,6 +75,7 @@ GET ALL => GET				http://server_address/api/:model_name?createdAt DESC&limit=30
 
 ### Games
 GET http://server_address/api/team/:id get all info player of team
+<br />
 POST http://server_address/api/game save a new game sending all params
 
 ### Param for new game
