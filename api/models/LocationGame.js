@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     game : {
       model : 'Games',
-      require : true
+      required : true
     },
     name : {
       type : 'string',

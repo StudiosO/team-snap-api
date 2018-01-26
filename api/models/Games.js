@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     team : {
       model : 'Teams',
-      require : true
+      required : true
     },
     dateTime : {
       type : 'datetime',

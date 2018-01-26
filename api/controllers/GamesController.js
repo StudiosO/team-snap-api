@@ -8,29 +8,31 @@
 module.exports = {
 	newGame : (req, res)=>{
         Games.create({
-            team : erq.team,
-            dateTime : req.body.dateTime,
+            team : req.body.team,
+            dateTime : require('moment')(req.body.dateTime, 'MM/DD/YYYY hh:mm:ss a').toISOString(),
             attendenceTraking : req.body.attendenceTraking,
             notifyTeam : req.body.notifyTeam,
             optionalInfo : req.body.optionalInfo,
         }, (error, game)=>{
-            if (error) { return res.serverError(err); }
+            if (error) { return res.serverError(error); }
 
             LocationGame.create({
                 game : game.id,
+                name : req.body.locationName,
                 address : req.body.address,
                 link : req.body.link,
                 detail : req.body.detail
             }, (err, location)=>{
-                if (error) { return res.serverError(err); }
+                if (err) { return res.serverError(err); }
 
                 OppenentGame.create({
                     game : game.id,
-                    name : req.body.name,
+                    name : req.body.oppenentName,
                     person : req.body.person,
                     phone : req.body.phone,
                     email : req.body.email
                 }, (er, opponent)=>{
+                    if(er){ return res.serverError(er); }
 
                     res.json({
                         game,
