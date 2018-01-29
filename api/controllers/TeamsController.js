@@ -4,12 +4,14 @@
  * @description :: Server-side logic for managing teams
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+const async = require('async')
 
 module.exports = {
     getAllData : function(req, res){
         Teams.findOne({
             id : req.params.id
         })
+        .populate("configuration")
         .exec(function(err, team){
             Managers.find({
                 team : req.params.id
@@ -33,8 +35,10 @@ module.exports = {
     
                   Players.find({
                       team : req.params.id
-                  }).populate('user')
+                  })
+                  .populate('user')
                   .populate('positions')
+                  .populate('parents')
                   .exec(function(error, _players){
                     if (err) {
                         return res.serverError(err);
@@ -42,42 +46,38 @@ module.exports = {
                       if (!_players) {
                         return res.notFound('Could not find Players, sorry.');
                       }
-                      
-                      res.json({
-                          managers,
-                          team,
-                          players : _players
-                      });
-                  })
+
+                      async.forEachOf(_players, (value, key, callback) => {
+                            async.forEachOf(_players[key].parents, (val, k, call) =>{
+                                User.findOne({
+                                    id : val.user
+                                }).exec((EroR, userParent)=>{
+                                    if(EroR){
+                                        return call(EroR)
+                                    }
+                                    _players[key].parents[k].user = userParent
+                                    call()
+                                })
+                            }, err => {
+                                if (err) return callback(err)
+                                
+                                callback()
+                            })
+
+                        }, err => {
+                            if (err) return res.serverError(err)
+                            
+                            res.json({
+                                managers,
+                                team,
+                                _players
+                            })
+                        })
+                })
 
             })
             
         })
     }
-
-    /*getAllData : function(req, res){
-        Teams.findOne({
-            id : req.params.id
-        }).exec(function(err, team){
-            if (err) {
-                return res.serverError(err);
-              }
-              if (!team) {
-                return res.notFound('Could not find Finn, sorry.');
-              }
-
-              Players.native(function(error, collection){
-                    if (error) return res.serverError(err);
-
-                    collection.find({
-                        team_id : team.id
-                    }).populate('user_id').toArray(function (err, results) {
-                        if (err) return res.serverError(err);
-                        team.players = results;
-                        return res.ok(team);
-                      });
-              })
-        })
-    }*/
 };
 

@@ -13,7 +13,7 @@ module.exports = {
       required : true
     },
     league : {
-      model : 'Leagues'
+      model : 'leagues'
     },
     managers : {
       collection : "managers",
@@ -21,6 +21,10 @@ module.exports = {
     },
     players : {
       collection : "players",
+      via : "team"
+    },
+    configuration : {
+      collection : "configurationteam",
       via : "team"
     }
 

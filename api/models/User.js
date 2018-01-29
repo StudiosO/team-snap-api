@@ -36,6 +36,10 @@ module.exports = {
       collection : 'players',
       via: 'user'
     },
+    parent :{
+      collection : 'parents',
+      via : "user"
+    },
     contacts : {
       collection : 'contacts',
       via : 'user'
