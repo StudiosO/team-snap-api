@@ -43,6 +43,10 @@ module.exports = {
       type : 'binData',
       required : false
     },
+    parents : {
+      collection : "parents",
+      via : 'childs'
+    },
     playerRegistration: {
       model: 'PlayerRegistration'
     },
