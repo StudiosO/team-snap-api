@@ -14,6 +14,11 @@ module.exports = {
               res.serverError(err);
               return;
             }
+            if( updated.length === 0){
+                res.json({ message : null })
+            }else{
+                res.redirect('/login');
+            }
         
         })
     
@@ -69,6 +74,22 @@ module.exports = {
             res.json({ message : "only user manager can register and create team at the same time"})
         }
         
+    },
+
+    login: function(req, res){
+        let password = require('../../password')
+        User.findOne({
+            username: req.body.username
+        }).exec(function(err, user){
+            if(err){ res.serverError(err); return; }
+
+            if( password.validate(req.body.password, user.password) ){
+                res.json(user);
+            }else{
+                res.json({ message : "User not found "})
+            }
+
+        })
     }
 };
 

@@ -70,6 +70,10 @@ module.exports = {
     code = randomatic('aA0', 6)
     user.verificationCode = code
     user.verified = false
+
+    //creat hash
+    user.password = require('../../password').hash(user.password)
+
     callback();
   },
 
