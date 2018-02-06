@@ -72,7 +72,7 @@ module.exports = {
                                 team,
                                 _players
                             })
-                        })
+                        }) 
                 })
 
             })

@@ -62,6 +62,7 @@ GET ALL => GET				http://server_address/api/:model_name?createdAt DESC&limit=30
 ```
 
 ### Custom endpoints:
+GET /verification/:id/:code for verification of email
 
 #### Users
 ```
