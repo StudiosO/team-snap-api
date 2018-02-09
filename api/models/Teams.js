@@ -23,6 +23,10 @@ module.exports = {
       collection : "players",
       via : "team"
     },
+    events : {
+      collection : "event",
+      via : "team"
+    },
     configuration : {
       collection : "configurationteam",
       via : "team"

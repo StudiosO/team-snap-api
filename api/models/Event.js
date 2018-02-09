@@ -9,9 +9,8 @@ module.exports = {
   connection : "mongoServer",
   attributes: {
     team : {
-      collection : 'locationevent',
-      via : 'event',
-      required : true
+      model : "teams",
+      unique : false
     },
     name : {
       type : "string",
@@ -40,6 +39,10 @@ module.exports = {
     optionalInfo : {
       type : 'json',
       required : true
+    },
+    user: {
+      model: "user",
+      required: true
     }
   }
 };
