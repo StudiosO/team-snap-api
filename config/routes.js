@@ -37,7 +37,10 @@ module.exports.routes = {
   },
   'GET /team/:id' : 'TeamsController.getAllData',
   'POST /game' : 'GamesController.newGame',
-  'POST /ev' : 'EventController.newEvent'
+  'POST /event' : 'EventController.newEvent',
+  'GET /verification/:id/:code': 'User.verified',
+  'POST /user/team': 'User.newUserXTeam',
+  'POST /login': 'User.login'
 
   /***************************************************************************
   *                                                                          *

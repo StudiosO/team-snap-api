@@ -5,6 +5,8 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+var code, mailer = require("../../mailer")
+
 module.exports = {
   connection: 'mongoServer',
   attributes: {
@@ -28,6 +30,14 @@ module.exports = {
     password: {
       type: 'string',      
       required: true
+    },
+    verificationCode : {
+      type: "string",
+      required : false
+    },
+    verified : {
+      type: 'boolean',
+      required : false
     },
     role: {
       model: 'roles'
@@ -53,6 +63,24 @@ module.exports = {
       via: 'user'
     } 
 
+  },
+
+  beforeCreate: function(user, callback){
+    let randomatic = require("randomatic")
+    code = randomatic('aA0', 6)
+    user.verificationCode = code
+    user.verified = false
+
+    //creat hash
+    user.password = require('../../password').hash(user.password)
+
+    callback();
+  },
+
+  afterCreate : function(newUser, cb){
+    mailer.sendCode(newUser.id, newUser.email, code)
+    cb();
   }
+  
 };
 
