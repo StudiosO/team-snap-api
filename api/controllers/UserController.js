@@ -80,13 +80,13 @@ module.exports = {
         let password = require('../../password')
         User.findOne({
             username: req.body.username
-        }).exec(function(err, user){
+        }).populate('role').exec(function(err, user){
             if(err){ res.serverError(err); return; }
 
             if( password.validate(req.body.password, user.password) ){
                 res.json(user);
             }else{
-                res.json({ message : "User not found "})
+                res.json({ message : "User not found"})
             }
 
         })
