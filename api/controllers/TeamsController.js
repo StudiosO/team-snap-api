@@ -78,6 +78,34 @@ module.exports = {
             })
             
         })
+    },
+
+    getTeamXIDUser : function(req, res){
+        if( req.params.name === "player"){
+            Players.findOne({
+                user : req.params.id
+            }).exec(function(err, team){
+                if( err ){ res.serverError(err); return; }
+
+                res.json(team);
+            })
+          }else if( req.params.name === "manager" ){
+            Managers.findOne({
+                user : req.params.id
+            }).exec(function(err, team){
+                if( err ){ res.serverError(err); return; }
+
+                res.json(team);
+            })
+          }else if( req.params.name === "parent" ){
+            Parents.findOne({
+                user : req.params.id
+            }).populate('childs').exec(function(err, team){
+                if( err ){ res.serverError(err); return; }
+
+                res.json(team);
+            })
+          }
     }
 };
 

@@ -86,7 +86,20 @@ function saveEvent(req, res){
     })
 }
 
+
+function getXTeam(req, res){
+    Event.find({
+        team : req.params.id
+    })
+    .exec(function(err, events){
+        if (err) { return res.serverError(err); return; }
+
+        res.json(events);
+    })
+}
+
 module.exports = {
-	newEvent : checkIFManagers
+    newEvent : checkIFManagers,
+    getXTeam
 };
 
