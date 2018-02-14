@@ -40,7 +40,9 @@ module.exports.routes = {
   'POST /event' : 'EventController.newEvent',
   'GET /verification/:id/:code': 'User.verified',
   'POST /user/team': 'User.newUserXTeam',
-  'POST /login': 'User.login'
+  'POST /login': 'User.login',
+  'GET /team/:name/:id': 'TeamsController.getTeamXIDUser',
+  'GET /event/team/:id': 'EventController.getXTeam'
 
   /***************************************************************************
   *                                                                          *
