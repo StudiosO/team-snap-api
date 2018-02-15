@@ -40,7 +40,7 @@ module.exports = {
       required : true
     },
     image : {
-      type : 'binData',
+      type : 'string',
       required : false
     },
     parents : {
