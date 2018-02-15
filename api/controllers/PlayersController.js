@@ -6,6 +6,19 @@
  */
 
 module.exports = {
-	
+	getXTeam: function(req, res){
+        Players.find({
+            team : req.params.id
+        })
+        .populate("user")
+        .populate("positions")
+        .populate("parents")
+        .exec(function(err, players){
+            if(err){ res.serverError(err); return; }
+
+            res.json(players)
+            
+        })
+    }
 };
 
