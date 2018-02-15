@@ -42,7 +42,7 @@ module.exports.routes = {
   'POST /user/team': 'User.newUserXTeam',
   'POST /login': 'User.login',
   'GET /team/:name/:id': 'TeamsController.getTeamXIDUser',
-  'GET /event/team/:id': 'EventController.getXTeam'
+  'GET /event/team/:date/:id': 'EventController.getXTeam'
 
   /***************************************************************************
   *                                                                          *
