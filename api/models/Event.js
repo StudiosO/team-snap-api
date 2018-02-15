@@ -21,7 +21,8 @@ module.exports = {
       required : true
     },
     dateTime : { 
-      type : 'datetime'
+      type : 'datetime',
+      require: true
     },
     repeats : {
       type : 'string',

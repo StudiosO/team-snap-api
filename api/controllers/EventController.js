@@ -89,7 +89,8 @@ function saveEvent(req, res){
 
 function getXTeam(req, res){
     Event.find({
-        team : req.params.id
+        team : req.params.id,
+        dateTime : { '>': require('moment')(req.params.date, "MM-DD-YYYY-hh:mm:ss-a").toISOString() }
     })
     .exec(function(err, events){
         if (err) { return res.serverError(err); return; }
