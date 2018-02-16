@@ -92,6 +92,7 @@ function getXTeam(req, res){
         team : req.params.id,
         dateTime : { '>': require('moment')(req.params.date, "MM-DD-YYYY-hh:mm:ss-a").toISOString() }
     })
+    .populate("location")
     .exec(function(err, events){
         if (err) { return res.serverError(err); return; }
 
