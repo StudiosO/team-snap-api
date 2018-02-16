@@ -41,9 +41,17 @@ module.exports = {
       type : 'json',
       required : true
     },
+    description: {
+      type: "string",
+      required : false
+    },
     user: {
       model: "user",
       required: true
+    },
+    location : {
+      collection: "locationevent",
+      via: "event"
     }
   }
 };

@@ -20,6 +20,14 @@ module.exports = {
       type : 'string',
       required : true
     },
+    latitud: {
+      type: "string",
+      required: false
+    },
+    longitud : {
+      type: "string",
+      requierd : false
+    },
     link : {
       type : 'string',
       required : true
