@@ -74,7 +74,7 @@ module.exports.http = {
   ***************************************************************************/
 
 
-     bodyParser: require ( ' skipper ' ) ({
+     bodyParser: require ('skipper') ({
         límite :  52428800 
     })
 
