@@ -76,7 +76,7 @@ function saveEvent(req, res){
             link : req.body.link,
             detail : req.body.detail
         }, (err, location)=>{
-            if (err) { return res.serverError(err); }
+            if (err) { return res.serverError(err); return; }
 
             res.json({
                 event,

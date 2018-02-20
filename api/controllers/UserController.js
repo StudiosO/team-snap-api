@@ -27,7 +27,7 @@ module.exports = {
         res.json([
             "Player",
             "Manager",
-            "Parent"
+            "Family"
         ]);
     },
     newUserXTeam: function(req, res){
@@ -90,6 +90,25 @@ module.exports = {
                 res.json({ message : "User not found"})
             }
 
+        })
+    },
+
+    newUserXFamily: function(req, res){
+        Roles.create({
+            name : "Family"
+        }).exec(function(err, role){
+            if(err){ res.serverError(err); return; }
+
+            User.create({
+                firstName : req.body.firstName,
+                lastName : req.body.lastName,
+                email : req.body.email,
+                password: "none"
+            }).exec(function(er, user){
+                if(er){ res.serverError(er); return; }
+
+                res.json(user);
+            })
         })
     }
 };

@@ -44,7 +44,8 @@ module.exports.routes = {
   'GET /team/:name/:id': 'TeamsController.getTeamXIDUser',
   'GET /event/team/:date/:id': 'EventController.getXTeam',
   "GET /players/team/:id": 'PlayersController.getXTeam',
-  'GET /contacts/user/:id': "ContactsController.getXUSer"
+  'GET /contacts/user/:id': "ContactsController.getXUSer",
+  "POST /user/family": "UserController.newUserXFamily"
 
   /***************************************************************************
   *                                                                          *

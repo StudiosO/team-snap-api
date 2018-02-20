@@ -16,8 +16,8 @@ module.exports = {
       model : 'Teams'
     },
     positions :{
-      collection : "positions",
-      via : "player"
+      type : 'array',
+      required : true
     },
     managerAccess : {
       type : 'Boolean',
@@ -43,9 +43,9 @@ module.exports = {
       type : 'string',
       required : false
     },
-    parents : {
-      collection : "parents",
-      via : 'childs'
+    family : {
+      collection : "family",
+      via : 'child'
     },
     playerRegistration: {
       model: 'PlayerRegistration'
