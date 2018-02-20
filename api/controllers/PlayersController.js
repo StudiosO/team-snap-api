@@ -11,8 +11,7 @@ module.exports = {
             team : req.params.id
         })
         .populate("user")
-        .populate("positions")
-        .populate("parents")
+        .populate("family")
         .exec(function(err, players){
             if(err){ res.serverError(err); return; }
 

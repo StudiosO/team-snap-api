@@ -21,7 +21,7 @@ module.exports = {
     username: {
       type: 'string',
       unique: true,
-      required: true
+      required: false
     },
     email: {
       type: 'email',
@@ -29,7 +29,7 @@ module.exports = {
     },
     password: {
       type: 'string',      
-      required: true
+      required: false
     },
     verificationCode : {
       type: "string",
@@ -46,8 +46,8 @@ module.exports = {
       collection : 'players',
       via: 'user'
     },
-    parent :{
-      collection : 'parents',
+    family :{
+      collection : 'family',
       via : "user"
     },
     contacts : {

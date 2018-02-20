@@ -38,7 +38,7 @@ module.exports = {
                   })
                   .populate('user')
                   .populate('positions')
-                  .populate('parents')
+                  .populate('family')
                   .exec(function(error, _players){
                     if (err) {
                         return res.serverError(err);
@@ -48,14 +48,14 @@ module.exports = {
                       }
 
                       async.forEachOf(_players, (value, key, callback) => {
-                            async.forEachOf(_players[key].parents, (val, k, call) =>{
+                            async.forEachOf(_players[key].family, (val, k, call) =>{
                                 User.findOne({
                                     id : val.user
                                 }).exec((EroR, userParent)=>{
                                     if(EroR){
                                         return call(EroR)
                                     }
-                                    _players[key].parents[k].user = userParent
+                                    _players[key].family[k].user = userParent
                                     call()
                                 })
                             }, err => {
@@ -97,8 +97,8 @@ module.exports = {
 
                 res.json(team);
             })
-          }else if( req.params.name === "parent" ){
-            Parents.findOne({
+          }else if( req.params.name === "family" ){
+            Family.findOne({
                 user : req.params.id
             }).populate('childs').exec(function(err, team){
                 if( err ){ res.serverError(err); return; }
