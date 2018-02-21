@@ -45,7 +45,9 @@ module.exports.routes = {
   'GET /event/team/:date/:id': 'EventController.getXTeam',
   "GET /players/team/:id": 'PlayersController.getXTeam',
   'GET /contacts/user/:id': "ContactsController.getXUSer",
-  "POST /user/family": "UserController.newUserXFamily"
+  "POST /user/family": "UserController.newUserXFamily",
+  "POST /players/image": "PlayersController.uploadImage",
+  "GEt /players/image/:id": "PlayersController.getImage"
 
   /***************************************************************************
   *                                                                          *
