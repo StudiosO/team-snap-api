@@ -110,6 +110,27 @@ module.exports = {
                 res.json(user);
             })
         })
+    },
+
+    newUserXPlayer: function(req, res){
+        Roles.create({ 
+            name : "Player"
+        }).exec(function(err, role){
+            if(err){ res.serverError(error); return; }
+
+            User.create({
+                username: req.body.username,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                password: req.body.password,
+                role: role.id
+            }).exec(function(erro, user){
+                if(err){ res.serverError(error); return; }
+
+                
+            })
+        })
     }
 };
 
