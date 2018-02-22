@@ -39,10 +39,6 @@ module.exports = {
       type : 'String',
       required : true
     },
-    image : {
-      type : 'string',
-      required : false
-    },
     family : {
       collection : "family",
       via : 'child'

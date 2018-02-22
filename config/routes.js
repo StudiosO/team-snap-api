@@ -47,7 +47,8 @@ module.exports.routes = {
   'GET /contacts/user/:id': "ContactsController.getXUSer",
   "POST /user/family": "UserController.newUserXFamily",
   "POST /players/image": "PlayersController.uploadImage",
-  "GEt /players/image/:id": "PlayersController.getImage"
+  "GET /players/image/:id": "PlayersController.getImage",
+  "POST /user/player": "User.newUserXPlayer"
 
   /***************************************************************************
   *                                                                          *

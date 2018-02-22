@@ -126,9 +126,34 @@ module.exports = {
                 password: req.body.password,
                 role: role.id
             }).exec(function(erro, user){
-                if(err){ res.serverError(error); return; }
+                if(erro){ res.serverError(erro); return; }
 
-                
+                if( req.body.contacts.length > 0 ){
+                    var each = require('sync-each');
+                    each(req.body.contacts, function (item, next) {
+                            
+                        Contacts.create({
+                            user : user.id,
+                            _type: item.type,
+                            name : item.name,
+                            info: item.info
+                        }).exec(function(err, cts){
+
+                            if(err){ next(err,cts) }
+
+                            next();
+                        })
+                        
+                    },
+                    function (e,transformedItems) {
+                        if(e){ res.serverError(e); return;}
+
+                        res.json(user);
+                    })
+
+                }else{
+                    res.json(user);
+                }
             })
         })
     }
