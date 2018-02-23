@@ -48,7 +48,8 @@ module.exports.routes = {
   "POST /user/family": "UserController.newUserXFamily",
   "POST /players/image": "PlayersController.uploadImage",
   "GET /players/image/:id": "PlayersController.getImage",
-  "POST /user/player": "User.newUserXPlayer"
+  "POST /user/player": "User.newUserXPlayer",
+  "DELETE /players/image/:id": "PlayersController.deleteImage"
 
   /***************************************************************************
   *                                                                          *

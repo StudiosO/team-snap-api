@@ -12,25 +12,17 @@ module.exports = {
       model : 'event',
       required : true
     },
-    name : {
-      type : 'string',
-      required : true
-    },
-    address : {
-      type : 'string',
-      required : true
-    },
-    latitud: {
+    lat: {
       type: "string",
-      required: false
+      required: true
     },
-    longitud : {
+    lng : {
       type: "string",
-      requierd : false
+      required : true
     },
     link : {
       type : 'string',
-      required : true
+      required : false
     },
     detail : {
       type : 'string',

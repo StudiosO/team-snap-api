@@ -18,7 +18,7 @@ module.exports = {
     },
     shortLabel : {
       type : 'string',
-      required : true
+      required : false
     },
     dateTime : { 
       type : 'datetime',
@@ -29,6 +29,10 @@ module.exports = {
       enum : ['no-repeat', 'daily', 'weekly'],
       required : true
     },
+    repeatsOption: {
+      type: "string",
+      required : false
+    },
     attendeceTracking : {
       type : 'boolean',
       required : true
@@ -38,8 +42,8 @@ module.exports = {
       required : true
     },
     optionalInfo : {
-      type : 'json',
-      required : true
+      type : 'string',
+      required : false
     },
     description: {
       type: "string",
@@ -50,8 +54,8 @@ module.exports = {
       required: true
     },
     location : {
-      collection: "locationevent",
-      via: "event"
+      model: "locationevent",
+      unique: true
     }
   }
 };

@@ -82,14 +82,17 @@ module.exports = {
             username: req.body.username
         }).populate("role").exec(function(err, user){
             if(err){ res.serverError(err); return; }
-            
-            console.log(user.password)
-            if( password.validate(req.body.password, user.password) ){
-                res.json(user);
+            console.log(user)
+            if( user ){
+                if( password.validate(req.body.password, user.password) ){
+                    res.json(user);
+                }else{
+                    res.json({ message : "User not found"})
+                }
             }else{
                 res.json({ message : "User not found"})
             }
-
+            
         })
     },
 

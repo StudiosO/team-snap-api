@@ -18,7 +18,7 @@ module.exports = {
     players: {
       collection: 'players',
       via: 'playerRegistration'
-    } 
+    }
   }
 };
 
