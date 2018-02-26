@@ -26,7 +26,7 @@ module.exports = {
     },
     detail : {
       type : 'string',
-      required : true
+      required : false
     }
   }
 };

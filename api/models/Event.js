@@ -22,7 +22,7 @@ module.exports = {
     },
     dateTime : { 
       type : 'datetime',
-      require: true
+      required: true
     },
     repeats : {
       type : 'string',
@@ -54,8 +54,8 @@ module.exports = {
       required: true
     },
     location : {
-      model: "locationevent",
-      unique: true
+      collection: "locationevent",
+      via : "event"
     }
   }
 };

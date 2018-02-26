@@ -39,9 +39,9 @@
 }
 
 function checkIFParents(req, res){
-    Parents.find({
+    Family.find({
         user : req.body.user
-    }).populate("childs",
+    }).populate("child",
         {
             user: req.body.user
         })
@@ -56,26 +56,15 @@ function checkIFParents(req, res){
 }
 
 function saveEvent(req, res){
-    Event.create({
-        team : req.body.team,
-        name : req.body.name,
-        shortLabel : req.body.shortLabel,
-        repeats : req.body.repeats,
-        dateTime : require('moment')(req.body.dateTime, 'MM/DD/YYYY hh:mm:ss a').toISOString(),
-        attendeceTracking : req.body.attendeceTracking,
-        notifyTeam : req.body.notifyTeam,
-        optionalInfo : req.body.optionalInfo,
-        user : req.body.user
-    }, (error, event)=>{
+    let _event = req.body.event;
+    _event.dateTime = require('moment')(_event.dateTime, 'YYYY/MM/DD HH:mm').toISOString();
+    console.log(req.body.event, _event);
+    Event.create(_event, (error, event)=>{
         if (error) { return res.serverError(error); }
-
-        LocationEvent.create({
-            event : event.id,
-            name : req.body.locationName,
-            address : req.body.address,
-            link : req.body.link,
-            detail : req.body.detail
-        }, (err, location)=>{
+        
+        let location = req.body.location;
+        location.event = event.id;
+        LocationEvent.create(location, (err, location)=>{
             if (err) { return res.serverError(err); return; }
 
             res.json({
@@ -89,8 +78,8 @@ function saveEvent(req, res){
 
 function getXTeam(req, res){
     Event.find({
-        team : req.params.id,
-        dateTime : { '>': require('moment')(req.params.date, "MM-DD-YYYY-hh:mm:ss-a").toISOString() }
+        team : req.params.id/*,
+        dateTime : { '>': require('moment')(req.params.date, "MM-DD-YYYY-hh:mm:ss-a").toISOString() }*/
     })
     .populate("location")
     .exec(function(err, events){
@@ -101,7 +90,7 @@ function getXTeam(req, res){
 }
 
 module.exports = {
-    newEvent : checkIFManagers,
+    newEvent : saveEvent,
     getXTeam,
     uploadImage: function(req, res){
         if( !req.body.hasOwnProperty("image") ){
@@ -114,7 +103,7 @@ module.exports = {
         let fs = require('fs')
         let path = require("path");
 
-        let directory = path.resolve(__dirname, "../../assets/images/players/");
+        let directory = path.resolve(__dirname, "../../assets/images/events/");
 
         //create directory if not exists
         if (!fs.existsSync(directory)){
@@ -140,7 +129,7 @@ module.exports = {
       const fs = require('fs');
       let path = require("path");
 
-      let directory = path.resolve(__dirname, "../../assets/images/players/");
+      let directory = path.resolve(__dirname, "../../assets/images/events/");
 
       if ( !fs.existsSync(path.join(directory, req.params.id+".jpg") ) ){
 
@@ -163,7 +152,7 @@ module.exports = {
         const fs = require('fs');
         let path = require("path");
   
-        let directory = path.resolve(__dirname, "../../assets/images/players/");
+        let directory = path.resolve(__dirname, "../../assets/images/events/");
 
         fs.unlink(path.join(directory, req.params.id+ ".jpg"), (err) => {
             if (err){ throw err; return; };
