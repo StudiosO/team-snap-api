@@ -20,6 +20,11 @@ module.exports = {
         })
     },
     uploadImage: function (req, res) {
+        if( !req.body.hasOwnProperty("image") ){
+            res.json({ message : "not image" });
+            return;
+        }
+        
         let base64 = req.body.image.replace(/^data:image\/jpeg;base64,/, "");
 
         let fs = require('fs')
@@ -68,6 +73,18 @@ module.exports = {
       // convert binary data to base64 encoded string
       res.json({ data })
     
+    },
+
+    deleteImage: function(req, res){
+        const fs = require('fs');
+        let path = require("path");
+  
+        let directory = path.resolve(__dirname, "../../assets/images/players/");
+
+        fs.unlink(path.join(directory, req.params.id+ ".jpg"), (err) => {
+            if (err){ throw err; return; };
+            res.json({ message : "success" })
+        });
     }
 };
 

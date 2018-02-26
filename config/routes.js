@@ -37,7 +37,11 @@ module.exports.routes = {
   },
   'GET /team/:id' : 'TeamsController.getAllData',
   'POST /game' : 'GamesController.newGame',
+
   'POST /event' : 'EventController.newEvent',
+  "POST /event/image": "EventController.uploadImage",
+  "GET /event/image/:id": "EventController.getImage",
+
   'GET /verification/:id/:code': 'User.verified',
   'POST /user/team': 'User.newUserXTeam',
   'POST /login': 'User.login',
@@ -47,7 +51,9 @@ module.exports.routes = {
   'GET /contacts/user/:id': "ContactsController.getXUSer",
   "POST /user/family": "UserController.newUserXFamily",
   "POST /players/image": "PlayersController.uploadImage",
-  "GEt /players/image/:id": "PlayersController.getImage"
+  "GET /players/image/:id": "PlayersController.getImage",
+  "POST /user/player": "User.newUserXPlayer",
+  "DELETE /players/image/:id": "PlayersController.deleteImage"
 
   /***************************************************************************
   *                                                                          *

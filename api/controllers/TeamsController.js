@@ -105,6 +105,8 @@ module.exports = {
 
                 res.json(team);
             })
+          }else{
+              res.json({ message : "not found"});
           }
     }
 };
