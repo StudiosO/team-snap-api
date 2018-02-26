@@ -62,18 +62,29 @@ GET ALL => GET				http://server_address/api/:model_name?createdAt DESC&limit=30
 ```
 
 ### Custom endpoints:
-GET /verification/:id/:code for verification of email
 
-POST /login for login of user
 
 #### Users
 ```
-
-
+POST /user/team  //create user using a team created or create a new
+GET /verification/:id/:code for verification of email
+POST /login //for login of user
+GET /event/team/:date/:id //get all events for id team, date is now
+GET /team/:rolename/:id  //get team for role and id user
+GET /contacts/user/:id  //get all info contacts for id user
+POST /user/family  //create user family parameters firsName, lastName, email not send password, password default is none in family
+POST /user/player  //create user player after of send to endpoint for save player info
 ```
 ##### User Params
 ```
-
+username
+firstName
+lastName
+email
+password
+newTeam  //true or false
+teamName  //if team is new
+teamID //if not is team new
 ```
 
 ### Teams
